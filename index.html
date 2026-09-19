@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusList</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+
+  <main class="app">
+
+    <header class="header">
+      <div class="header-top">
+
+        <div class="brand">
+
+         <img src="logo.png" alt="FocusList" class="brand-logo" onerror="this.style.display='none'; document.querySelector('.brand-mark-fallback').style.display='grid';" />
+
+         
+          <div class="brand-text">
+            <h1>FocusList</h1>
+          </div>
+        </div>
+        <div class="time" id="time-display"></div>
+      </div>
+      <p class="header-sub">A disciplined space for your tasks that matters.</p>
+    </header>
+
+    <section class="stats" aria-label="Task statistics">
+
+      <div class="stat">
+        <div class="stat-value" id="stat-total">00</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+
+        <div class="stat-value" id="stat-pending">00</div>
+        <div class="stat-label">Pending</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-value" id="stat-completed">00</div>
+        <div class="stat-label">Done</div>
+      </div>
+
+      <div class="stat-divider"></div>
+      <div class="stat">
+
+        <div class="stat-value" id="stat-progress">0<span class="stat-unit">%</span></div>
+        <div class="stat-label">Progress</div>
+
+      </div>
+
+    </section>
+
+    <section class="composer">
+
+      <form id="task-form" class="composer-form">
+        <div class="composer-main">
+            
+          <span class="composer-prefix">+</span>
+          <input
+            type="text"
+            id="task-input"
+            class="composer-input"
+            placeholder="Write a task, press enter"
+            maxlength="140"
+            autocomplete="off"
+            required
+          />
+
+        </div>
+        <div class="composer-actions">
+          <div class="priority-picker" role="radiogroup" aria-label="Priority">
+            <button type="button" class="priority-chip" data-priority="low" aria-pressed="false">Low</button>
+            <button type="button" class="priority-chip active" data-priority="medium" aria-pressed="true">Medium</button>
+            <button type="button" class="priority-chip" data-priority="high" aria-pressed="false">High</button>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span>Add</span>
+
+            <kbd>↵</kbd>
+          </button>
+
+        </div>
+      </form>
+    </section>
+
+    <section class="controls">
+
+      <div class="search-wrap">
+
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search" aria-label="Search tasks" />
+        <kbd class="search-kbd">/</kbd>
+
+
+      </div>
+
+    <div class="filter-bar">
+        <div class="filter-set" data-set="status">
+           <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="active">Active</button>
+          <button class="filter-tab" data-filter="completed">Done</button>
+          <span class="filter-indicator" aria-hidden="true"></span>
+        </div>
+
+        <div class="filter-set-sec">
+          <button class="pchip active" data-priority="all">All</button>
+          <button class="pchip" data-priority="high"><span class="pdot pdot-high"></span>High</button>
+           <button class="pchip" data-priority="medium"><span class="pdot pdot-med"></span>Medium</button>
+          <button class="pchip" data-priority="low"><span class="pdot pdot-low"></span>Low</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="list-section" aria-label="Task list">
+       <div class="list-head">
+        <span class="list-title">Tasks</span>
+         <span class="list-count" id="list-count">0 shown</span>
+      </div>
+      <ul id="task-list" class="task-list"></ul>
+
+      <div id="empty-state" class="empty" style="display:none;">
+        <div class="empty-line"></div>
+        <p class="empty-title">Nothing here yet.</p>
+        <p class="empty-sub">Add your first task above.</p>
+      </div>
+
+      <div id="no-results" class="empty" style="display:none;">
+        <div class="empty-line"></div>
+        <p class="empty-title">No matches.</p>
+        <p class="empty-sub">Try a different search or filter.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Made with ❤️ by Saikat</span>
+    
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
